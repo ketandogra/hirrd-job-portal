@@ -1,17 +1,40 @@
-import { useState } from 'react'
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
+import AppLayout from './layouts/app-layout'
+import LandingPage from './pages/landing'
+import Onbaording from './pages/onboarding'
+import JobListing from './pages/job-listing'
+import JobPage from './pages/job'
+import PostJob from './pages/post-job'
+import SavedJobs from './pages/saved-jobs'
+import MyJobs from './pages/my-jobs'
+import { ThemeProvider } from "@/components/theme-provider"
 
+
+const router = createBrowserRouter([
+  {element: <AppLayout/>,
+    children:[
+      {path: '/', element: <LandingPage/>},
+      {path: '/onboarding', element: <Onbaording/>},
+      {path: '/jobs', element: <JobListing/>},
+      {path: '/job/:id', element: <JobPage/>},
+      {path: '/post-job', element: <PostJob/>},
+      {path: '/saved-jobs', element: <SavedJobs/>},
+      {path: '/my-jobs', element: <MyJobs/>},
+    //404 page
+    ]
+  }
+])
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div>
-        Hirrd
-      </div>
-        
-    </>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <RouterProvider router={router}/>
+    </ThemeProvider>
+
+  
+
   )
 }
 
