@@ -45,7 +45,7 @@ export default function LandingPage() {
         </Link>
         <Link to="/post-job">
           <Button variant="destructive" size="xl">
-            Post a Jobs
+            Post a Job
           </Button>
         </Link>
       </div>
